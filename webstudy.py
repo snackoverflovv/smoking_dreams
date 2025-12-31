@@ -1,24 +1,11 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[9]:
-
-
-get_ipython().system('pip install fastapi uvicorn holidays')
-get_ipython().system('pip install streamlit holidays ipywidgets')
-
-
-# In[10]:
-
+#pip install fastapi uvicorn holidays
+#pip install streamlit holidays ipywidgets
 
 from datetime import date, timedelta
 import holidays
 
 # 대한민국 공휴일
 KR_HOLIDAYS = holidays.KR()
-
-
-# In[11]:
 
 
 def is_holiday(d: date, extra_holidays: set[date] | None = None) -> bool:
@@ -36,9 +23,6 @@ def is_holiday(d: date, extra_holidays: set[date] | None = None) -> bool:
         or d in KR_HOLIDAYS
         or d in extra_holidays
     )
-
-
-# In[12]:
 
 
 def calculate_rest_period(
@@ -74,9 +58,6 @@ def calculate_rest_period(
     }
 
 
-# In[13]:
-
-
 def recommend_best_vacations(
     search_start: date,
     search_end: date,
@@ -105,10 +86,3 @@ def recommend_best_vacations(
     # 실제 휴식 일수 기준 정렬
     results.sort(key=lambda x: x["total_rest_days"], reverse=True)
     return results[:top_k]
-
-
-# In[ ]:
-
-
-
-
